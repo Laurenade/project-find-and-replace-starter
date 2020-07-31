@@ -28,21 +28,18 @@ const rowElements = document.querySelectorAll(".row")
 replaceAllButton.addEventListener("click", function() {
     let findBoxValue = findInput.value
     let replaceBoxValue = replaceInput.value
-    const cellsArray = []
     for (let position = 1; position <= rowElements.length; position += 1) {
             currentRowElement = rowElements[position]
-            function getCellElements (currentRowElement) {
+            getCellElements (currentRowElement)
                 return currentRowElement.querySelectorAll(".cell")               
-            }
-            cellsArray.push(getCellElements)
+    }
             for (let position= 1; position <= cellsArray.length; position += 1) {
-                if (cellsArray.includes(findBoxValue)) {
-                    return cellsArray.innerHTML.replace(findBoxValue, replaceBoxValue)
+                if (cellsArray[position]) {
+                    cellsArray.innerHTML.replace(findBoxValue, replaceBoxValue)
                 }
             }
-    }
-    //   console.log('good')
 })
+    //   console.log('good')
 
 /*  
 loop over rowElements 
@@ -91,3 +88,28 @@ GOAL:  Add a basic "find & replace" feature to our app
 //
 // You can, of course, remove any comments in this starter project once
 // you have read them, if you prefer.
+
+
+
+
+
+/*
+replaceAllButton.addEventListener("click", function() {
+    let findBoxValue = findInput.value
+    let replaceBoxValue = replaceInput.value
+    const cellsArray = []                              <== this array isn't needed                                                 ----------
+    for (let position = 1; position <= rowElements.length; position += 1) {
+            currentRowElement = rowElements[position]
+            function getCellElements (currentRowElement) {       <== this needs to be just a function call, not the whole function    ---------
+                return currentRowElement.querySelectorAll(".cell")               
+            }
+                          // the getCellElements function gives you back an array, so you can just save it as cellsArray.
+            cellsArray.push(getCellElements)          <== also not needed since you are using the array from getCellElements          ----------
+            for (let position= 1; position <= cellsArray.length; position += 1) {
+                if (cellsArray.includes(findBoxValue)) {           <== you will want to use the current cell, cellsArray[position]    ----------
+                    return cellsArray.innerHTML.replace(findBoxValue, replaceBoxValue)   <== you don't want a return here, 
+                                                                                      you just want to replace the innerHTML with     ----------
+                                                                                      the string from the replace function.
+                }
+            }
+*/
