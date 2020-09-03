@@ -1,15 +1,15 @@
 // You should NOT change the HTML or CSS in this project (at least until you reach
 // the bonus objectives). Focus on the JavaScript.
 
-const findInput = document.querySelector(".find-input");
-const replaceInput = document.querySelector(".replace-input");
-const replaceAllButton = document.querySelector(".replace-all-button");
+// const findInput = document.querySelector(".find-input");
+// const replaceInput = document.querySelector(".replace-input");
+// const replaceAllButton = document.querySelector(".replace-all-button");
 
 // The following variable holds your OUTER ARRAY of row elements.
 // Later you will need an OUTER LOOP to loop over the individual elements within
 // this array.
 
-const rowElements = document.querySelectorAll(".row");
+// const rowElements = document.querySelectorAll(".row");
 
 // When you call the function belwo, it will get and return an INNER ARRAY
 // containing the cell elements for a given row.
@@ -19,28 +19,49 @@ const rowElements = document.querySelectorAll(".row");
 
 // YOUR CODE GOES HERE
 
+const findInput = document.querySelector(".find-input");
+const replaceInput = document.querySelector(".replace-input");
+const replaceAllButton = document.querySelector(".replace-all-button");
+
+const rowElements = document.querySelectorAll(".row");
+
+function getCellElements(currentRowElement) {
+  return currentRowElement.querySelectorAll(".cell");
+}
+
 replaceAllButton.addEventListener("click", function () {
-  let findBoxValue = findInput.value;
-  let replaceBoxValue = replaceInput.value;
-  const cellsArray = getCellElements(currentRowElement);
-  const currentRowElement = rowElements[position];
+  const findBoxValue = findInput.value;
+  const replaceBoxValue = replaceInput.value;
 
   for (let position = 1; position <= rowElements.length; position += 1) {
-    function getCellElements(currentRowElement) {
-      return currentRowElement.querySelectorAll(".cell");
-    }
-  }
+    let currentRowElement = rowElements[position];
+    let cellsArray = getCellElements(currentRowElement);
 
-  for (let position = 1; position <= cellsArray.length; position += 1) {
-    while (cellsArray[position].innerHTML.includes(findBoxValue)) {
-      cellsArray[position].innerHTML = cellsArray[position].innerHTML.replace(
-        findBoxValue,
-        replaceBoxValue
-      );
+    for (let position = 1; position <= cellsArray.length; position += 1) {
+      while (cellsArray[position].innerHTML.includes(findBoxValue)) {
+        cellsArray[position].innerHTML = cellsArray[position].innerHTML.replace(
+          findBoxValue,
+          replaceBoxValue
+        );
+      }
     }
   }
 });
 console.log("good");
+
+// function getCellElements(currentRowElement){
+//   // all the default code
+// }
+// replaceAllButton.addEventListener... {
+//   for(rows){
+//       // call getCellElements() here.
+//       for(cells){
+//           while(){
+//               replace()
+//           }
+//       }
+//   }
+// }
 
 /*  
 loop over rowElements 
