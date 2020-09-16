@@ -33,11 +33,11 @@ replaceAllButton.addEventListener("click", function () {
   const findBoxValue = findInput.value;
   const replaceBoxValue = replaceInput.value;
 
-  for (let position = 1; position <= rowElements.length; position += 1) {
+  for (let position = 0; position < rowElements.length; position += 1) {
     let currentRowElement = rowElements[position];
     let cellsArray = getCellElements(currentRowElement);
 
-    for (let position = 1; position <= cellsArray.length; position += 1) {
+    for (let position = 0; position < cellsArray.length; position += 1) {
       while (cellsArray[position].innerHTML.includes(findBoxValue)) {
         cellsArray[position].innerHTML = cellsArray[position].innerHTML.replace(
           findBoxValue,
